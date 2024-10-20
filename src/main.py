@@ -1,8 +1,7 @@
-# main.py
 import argparse
-from src.modeling.train_model import train
-from src.modeling.predict_model import predict
-from src.modeling.evaluate_model import evaluate
+from modeling.train_model import train
+from modeling.predict_model import predict
+from modeling.evaluate_model import evaluate
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Pipeline de classification de vidéos')

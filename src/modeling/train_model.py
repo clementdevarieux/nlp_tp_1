@@ -1,4 +1,3 @@
-# train_model.py
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
@@ -10,8 +9,8 @@ import joblib
 def train(input_filename, model_dump_filename):
     # Charger les données
     data = pd.read_csv(input_filename)
-    X = data['title']
-    y = data['label']
+    X = data['video_name']
+    y = data['is_comic']
 
     # Diviser les données en ensembles d'entraînement et de test
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

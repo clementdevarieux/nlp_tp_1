@@ -1,4 +1,3 @@
-# evaluate_model.py
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
@@ -8,8 +7,8 @@ from sklearn.model_selection import cross_val_score
 def evaluate(input_filename):
     # Charger les données
     data = pd.read_csv(input_filename)
-    X = data['title']
-    y = data['label']
+    X = data['video_name']
+    y = data['is_comic']
 
     # Créer le pipeline
     pipeline = Pipeline([
