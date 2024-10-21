@@ -3,20 +3,24 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import cross_val_score
+from nltk.corpus import stopwords
+import nltk
+import joblib
 
-def evaluate(input_filename):
-    # Charger les données
+nltk.download('stopwords')
+
+def evaluate(input_filename, model_dump_filename):
     data = pd.read_csv(input_filename)
     X = data['video_name']
     y = data['is_comic']
 
-    # Créer le pipeline
-    pipeline = Pipeline([
-        ('vectorizer', CountVectorizer()),
-        ('classifier', RandomForestClassifier())
-    ])
+    # pipeline = Pipeline([
+    #     ('vectorizer', CountVectorizer(stop_words=stopwords.words('french'), lowercase=False)),
+    #     ('classifier', RandomForestClassifier())
+    # ])
 
-    # Évaluer le modèle avec la cross-validation
+    pipeline = joblib.load(model_dump_filename)
+
     scores = cross_val_score(pipeline, X, y, cv=5)
     print(f'Cross-validation scores: {scores}')
     print(f'Mean accuracy: {scores.mean()}')
