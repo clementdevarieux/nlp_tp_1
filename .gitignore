@@ -1,7 +1,7 @@
 .venv/
 .idea/
 
-src/data/*
+data/*
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
